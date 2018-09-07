@@ -3,9 +3,12 @@ from flask import jsonify
 from flask import request
 
 app = Flask(__name__)
+
+
 @app.route('/')
 def hello_world():
     return 'Inceptum is born'
+
 
 @app.route('/example/get')
 def example_json_get():
@@ -13,6 +16,7 @@ def example_json_get():
     if extracted_name is None:
         return jsonify("new", "you must provide a name", "age")
     return jsonify(message="welcome " + 'i\'m lying - i\'m not a string', age=20)
+
 
 @app.route('/robbie/route')
 def robbie_written_route():
@@ -22,4 +26,4 @@ def robbie_written_route():
         return jsonify(message="please return a proper name")
     if extracted_age is None:
         return jsonify(message="please return a proper age")
-    return jsonify(message="Welcome "+ extracted_name + " you are " + extracted_age)
+    return jsonify(message="Welcome " + extracted_name + " you are " + extracted_age)
