@@ -1,6 +1,10 @@
 from flask import Flask
+from flask import request
 app = Flask(__name__)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-  return 'Please Login to Continue'
+  if request.method == 'POST':
+      return "This is a POST request"
+  else:
+      return "This is not a POST request"
